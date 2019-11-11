@@ -1,0 +1,16 @@
+#!/bin/bash
+trap '' HUP
+
+if pidof clementine >/dev/null; then
+   exit 0   
+else
+   if pidof feh >/dev/null; then
+   killall feh osd_time slideshow
+   fi
+   sudo vbetool dpms on
+   DISPLAY=:0 clementine -u & 
+#   export DISPLAY=:0.0 &
+#   clementine &
+fi
+
+exit 0

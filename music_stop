@@ -1,0 +1,9 @@
+#!/bin/bash
+#trap '' HUP
+
+if pidof clementine >/dev/null; then
+   sudo vbetool dpms off
+   killall clementine
+fi
+
+exit 0

@@ -1,0 +1,21 @@
+#!/bin/bash
+#trap '' HUP
+
+feh_state=0
+
+# If feh is running stop it and remember state
+if pidof feh >/dev/null; then
+   killall feh osd_time slideshow
+   feh_state=1
+else
+   sudo vbetool dpms on
+fi
+
+export DISPLAY=:0.0
+
+clementine &
+
+# sudo ps aux | grep -ie chromium | awk '{print $2}' | xargs kill -9
+
+
+exit 0
